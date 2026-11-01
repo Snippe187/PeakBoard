@@ -20,7 +20,7 @@ dependencies {
     // Die PeakCore-API ist im fertigen Jar schon dabei, deshalb nur zum Kompilieren
     compileOnly("de.peakverse:core-api")
 
-    testCompileOnly("io.papermc.paper:paper-api:${property("paper_api_version")}")
+    testImplementation("io.papermc.paper:paper-api:${property("paper_api_version")}")
     testImplementation("de.peakverse:core-api")
     testImplementation("com.google.code.gson:gson:2.11.0")
     testImplementation(platform("org.junit:junit-bom:5.11.4"))
