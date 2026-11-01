@@ -1,0 +1,2 @@
+# Standard-Config des Moduls PeakBoard (wird nach plugins/PeakBoard/config.yml kopiert, falls dort noch keine liegt)
+# Die Seite im Web gibt es nur, wenn web.enabled in der PeakCore-config.yml an ist.
