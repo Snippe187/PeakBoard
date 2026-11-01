@@ -1,5 +1,14 @@
 # Aenderungen
 
+## 0.1.2 (in Arbeit)
+
+- Neue **Spielansicht** statt Uebersicht: ein Bild wie in Minecraft (Tab-Liste, Seitenleiste, Spieler mit Namensschild); anklicken, was man aendern will, rechts erscheinen die Einstellungen dazu (welches Objective, Darstellung, Punkte, Team)
+- Einfache Begriffe: Objective-Arten mit deutschen Namen (z. B. Tode, Spielzeit), Hilfetexte in jedem Menue
+- **Teams per Drag & Drop**: Spieler (auch offline per Name) in die Team-Spalte ziehen, zurueck nach "Ohne Team" zum Herausnehmen; Teams mit Farbpalette, Namensschild- und Teameinstellungen
+- **Tabelle**: suchen, nach Spalten sortieren, nur Online-Spieler, mehrere Eintraege auf einmal aendern (dazugeben, setzen, zuruecksetzen)
+- **Rangliste**: Medaillen, Suche, Klick auf einen Spieler oeffnet ihn, Objective mit einem Klick in die Seitenleiste legen
+- Aenderungen laufen weiter ueber den Entwurf (Veroeffentlichen mit einem Klick, Fremdes wird geschuetzt)
+
 ## 0.1.1
 
 - Neuer Reiter "Anzeige": jeder Spieler sieht rechts seine eigene Seitenleiste mit Platzhaltern (Stats, Spielzeit, Ping, Rangliste, Geld ueber Vault, PlaceholderAPI), Seiten, die nach Zeit wechseln, und einem animierten Titel
