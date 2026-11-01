@@ -9,6 +9,9 @@ export default async function mount(root, ctx) {
   const draft = () => st.draft, liveM = () => st.live;
 
   async function load() { st = await ctx.api('state'); }
+  // Zeichnet nur neu, wenn sich wirklich etwas geaendert hat: sonst starten Animationen (Siegertreppchen, Balken) alle 5 Sekunden von vorn
+  const sig = () => JSON.stringify([st.live, st.draft, st.ops, st.online, st.draftError]);
+  async function refresh() { const before = st ? sig() : ''; await load(); if (sig() !== before) render(); }
   async function queue(ops, confirm) {
     try { st = await ctx.api('draft', { method: 'POST', body: { ops, confirmForeign: !!confirm } }); render(); return true; }
     catch (e) {
@@ -573,9 +576,9 @@ table tr:hover td{background:rgba(111,140,255,.08)}`;
     if (!root.isConnected) { clearInterval(timer); return; }
     if (tab === 'display') return;
     if (root.contains(document.activeElement) && ['INPUT', 'SELECT'].includes(document.activeElement.tagName)) return;
-    try { await load(); render(); } catch { /* egal */ }
+    try { await refresh(); } catch { /* egal */ }
   }, 5000);
-  ctx.on(async d => { if (d.module === 'peakboard' && tab !== 'display' && !root.contains(document.activeElement)) { await load(); render(); } });
+  ctx.on(async d => { if (d.module === 'peakboard' && tab !== 'display' && !root.contains(document.activeElement)) await refresh(); });
   await load();
   await loadDisplay();
   render();
