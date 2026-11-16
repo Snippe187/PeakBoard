@@ -1,5 +1,8 @@
 # Aenderungen
 
+## Unveroeffentlicht
+- Neue Platzhalter aus PeakStats: `%stats:spielzeit%` (eigener Wert), `%statsname:spielzeit:1%` und `%statsval:spielzeit:1%` (Rangliste). Es erscheinen nur vom Admin freigegebene Werte, sonst `-`. Im Spiel noch nicht gesehen.
+
 ## 0.1.2 (in Arbeit)
 
 - Neue **Spielansicht** statt Uebersicht: ein Bild wie in Minecraft (Tab-Liste, Seitenleiste, Spieler mit Namensschild); anklicken, was man aendern will, rechts erscheinen die Einstellungen dazu (welches Objective, Darstellung, Punkte, Team)
