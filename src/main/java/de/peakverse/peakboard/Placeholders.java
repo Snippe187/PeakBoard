@@ -41,6 +41,9 @@ public final class Placeholders {
             new Entry("score:NAME", "Punkte des Spielers im Objective NAME", "Player's score in objective NAME", "7"),
             new Entry("top:NAME:1", "Name auf Platz 1 des Objectives NAME", "Name at rank 1 of objective NAME", "Alex"),
             new Entry("topval:NAME:1", "Punkte auf Platz 1 des Objectives NAME", "Score at rank 1 of objective NAME", "42"),
+            new Entry("stats:WERT", "Eigener Wert aus PeakStats (spielzeit, kills, tode, bloecke, erze, strecke ...), nur wenn freigegeben", "Own PeakStats value (spielzeit, kills, tode, bloecke, erze, strecke ...), only if released", "14 Std 32 Min"),
+            new Entry("statsname:WERT:1", "Name auf Platz 1 der PeakStats-Rangliste", "Name at rank 1 of the PeakStats top list", "Alex"),
+            new Entry("statsval:WERT:1", "Wert auf Platz 1 der PeakStats-Rangliste", "Value at rank 1 of the PeakStats top list", "42 Std 10 Min"),
             new Entry("papi:NAME", "Platzhalter von PlaceholderAPI", "PlaceholderAPI placeholder", "..."));
 
     private Placeholders() { }
@@ -84,6 +87,7 @@ public final class Placeholders {
                 case "score" -> "7";
                 case "top" -> p.length > 2 ? new String[] {"Alex", "Steve", "Kim", "Joe", "Mia", "Lea", "Tom", "Ben", "Zoe", "Max"}[(parseInt(p[2], 1) - 1 + 10) % 10] : null;
                 case "topval" -> p.length > 2 ? String.valueOf(Math.max(1, 46 - 4 * parseInt(p[2], 1))) : null;
+                case "stats", "statsname", "statsval" -> p[0].equals("statsname") ? "Alex" : "42";
                 case "papi" -> "...";
                 default -> null;
             };

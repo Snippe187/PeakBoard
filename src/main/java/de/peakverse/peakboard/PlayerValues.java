@@ -75,9 +75,28 @@ final class PlayerValues {
             case "score": return parts.length > 1 ? score(parts[1], p.getName()) : null;
             case "top": return parts.length > 2 ? top(parts[1], Placeholders.parseInt(parts[2], 1), false) : null;
             case "topval": return parts.length > 2 ? top(parts[1], Placeholders.parseInt(parts[2], 1), true) : null;
+            case "stats": return parts.length > 1 ? statsValue(p, parts[1]) : null;
+            case "statsname": return parts.length > 2 ? statsTop(parts[1], Placeholders.parseInt(parts[2], 1), false) : null;
+            case "statsval": return parts.length > 2 ? statsTop(parts[1], Placeholders.parseInt(parts[2], 1), true) : null;
             case "papi": return parts.length > 1 ? papi(p, key.substring(key.indexOf(':') + 1)) : null;
             default: return null;
         }
+    }
+
+    /** PeakStats ist ein anderes Modul: Werte kommen ueber den Bukkit-Dienst, ohne Abhaengigkeit; ohne PeakStats bleibt "-". */
+    private static de.peakverse.core.api.stats.StatsLookup lookup() {
+        return Bukkit.getServicesManager().load(de.peakverse.core.api.stats.StatsLookup.class);
+    }
+
+    private static String statsValue(Player p, String word) {
+        var l = lookup();
+        return l == null ? "-" : l.value(p.getUniqueId(), word);
+    }
+
+    private static String statsTop(String word, int rank, boolean value) {
+        var l = lookup();
+        if (l == null) return "-";
+        return value ? l.topValue(word, rank) : l.topName(word, rank);
     }
 
     private static String stat(Player p, Statistic s) {
